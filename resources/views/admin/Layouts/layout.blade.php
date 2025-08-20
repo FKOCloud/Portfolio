@@ -40,7 +40,8 @@
             </div>
             <footer class="main-footer">
                 <div class="footer-left">
-                    Copyright &copy; 2025 <div class="bullet"></div> Project By <a href="#">Flora-kariba
+                    Copyright &copy; 2025 <div class="bullet"></div> Project By <a
+                        href="https://github.com/FKOCloud">Flora-kariba
                     </a>
                 </div>
                 <div class="footer-right">

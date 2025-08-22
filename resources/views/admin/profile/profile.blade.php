@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="section-body">
-            <h2 class="section-title">Hi, fkoadmin!</h2>
+            <h2 class="section-title">Hi, {{ old('name', $user->name) }}!</h2>
             <p class="section-lead">
                 Edit profile
             </p>
@@ -30,7 +30,7 @@
                                 @method('patch')
 
                                 <div class="row">
-                                    <div class="form-group col-md-6 col-12">
+                                    <div class="form-group col-12">
                                         <label>name</label>
                                         <input type="text" class="form-control" name="name"
                                             value="{{ old('name', $user->name) }}" required="">
@@ -39,7 +39,7 @@
                                         @endif
                                     </div>
 
-                                    <div class="form-group col-md-6 col-12">
+                                    <div class="form-group col-12">
                                         <label>email</label>
                                         <input type="email" class="form-control" name="email"
                                             value="{{ old('email', $user->email) }}" required autocomplete="username">
@@ -53,12 +53,7 @@
                                     <button class="btn btn-primary">Save Changes</button>
                                 </div>
                             </form>
-
-
-
                         </div>
-
-
                     </div>
 
                     <div class="card">
@@ -73,30 +68,38 @@
                                 @method('put')
 
                                 <div class="row">
-                                    <div class="form-group col-md-6 col-12">
-                                        <label>name</label>
-                                        <input type="text" class="form-control" name="name"
-                                            value="{{ old('name', $user->name) }}" required="">
-                                        @if ($errors->has('name'))
-                                            <code>{{ $errors->first('name') }}</code>
+                                    <div class="form-group  col-12">
+                                        <label>Current Password</label>
+                                        <input type="password" class="form-control" name="current_password"
+                                            autocomplete="current-password">
+                                        @if ($errors->updatePassword->has('current_password'))
+                                            <code>{{ $errors->updatePassword->first('current_password') }}</code>
                                         @endif
                                     </div>
 
-                                    <div class="form-group col-md-6 col-12">
-                                        <label>email</label>
-                                        <input type="email" class="form-control" name="email"
-                                            value="{{ old('email', $user->email) }}" required autocomplete="username">
-                                        @if ($errors->has('email'))
-                                            <code>{{ $errors->first('email') }}</code>
+                                    <div class="form-group  col-12">
+                                        <label>New Password</label>
+                                        <input type="password" class="form-control" name="password"
+                                            autocomplete="new-password">
+                                        @if ($errors->updatePassword->has('password'))
+                                            <code>{{ $errors->updatePassword->first('password') }}</code>
                                         @endif
+                                    </div>
 
+                                    <div class="form-group   col-12">
+                                        <label>Confirm Password</label>
+                                        <input type="password" class="form-control" name="password_confirmation"
+                                            autocomplete="new-password">
+                                        @if ($errors->updatePassword->has('password'))
+                                            <code>{{ $errors->updatePassword->first('password') }}</code>
+                                        @endif
                                     </div>
                                 </div>
+
                                 <div class="card-footer text-right">
-                                    <button class="btn btn-primary">Save Changes</button>
+                                    <button class="btn btn-primary">Save</button>
                                 </div>
                             </form>
-
 
 
                         </div>

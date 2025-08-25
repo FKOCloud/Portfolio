@@ -16,7 +16,7 @@
 
 <body>
 	<div class="preloader">
-		<img src="images/preloader.gif" alt="mmmmph">
+		<img src="public/frontend/assets/images/Ripple@1x-1.0s-200px-200px.svg" alt="Loading....">
 	</div>
           <!-- navbar-Area-Start -->
            @include('frontend.layouts.navbar')

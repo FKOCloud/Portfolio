@@ -23,31 +23,34 @@
                         </div>
 
                         <div class="card-body">
-                            <form action="">
+                            <form action="{{ route('admin.Hero.update', 1) }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
+
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Title</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" class="form-control">
+                                        <input type="text" name="title" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Sub-title</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <textarea name="" id="" class="form-control" style="height: 80px"></textarea>
+                                        <textarea name="sub_title" id="" class="form-control" style="height: 80px"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Button text</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" class="form-control">
+                                        <input type="text" name="btn_text" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Button URL</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" class="form-control">
+                                        <input type="text" name="btn_url" class="form-control">
                                     </div>
                                 </div>
 
@@ -61,15 +64,15 @@
                                         </div>
 
                                     </div>
-
-                                    <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
-                                        <div class="col-sm-12 col-md-7">
-                                            <button class="btn btn-primary">Update</button>
-                                        </div>
-                                    </div>
-
                                 </div>
+
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <button class="btn btn-primary">Update</button>
+                                    </div>
+                                </div>
+
                             </form>
 
 

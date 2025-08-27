@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Hero;
 use Illuminate\Http\Request;
 
 class HeroController extends Controller
@@ -52,14 +53,37 @@ class HeroController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
-    }
+        $request->validate([
+            'title' => ['required', 'max:200'],
+            'sub_title' => ['required', 'max:500'],
+            'image' => ['max:5000', 'image'],
+        ]);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        // dd($request->all());
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = rand() . $image->getClientOriginalName();
+            $image->move(public_path('/uploads'), $imageName);
+            $imagePath = "/uploads/" . $imageName;
+        }
+
+        Hero::updateOrCreate(
+            ['id' => $id],
+            [
+                'title' => $request->title,
+                'sub_title' => $request->sub_title,
+                'btn_text' => $request->btn_txt,
+                'btn_url' => $request->btn_url,
+                'image' => isset($imagePath) ? $imagePath : asset(''),
+            ]
+        );
+
+        flash()->success('Hero section updated succesfully');
+        return redirect()->back();   //dd('success')
+
+        /**
+         * Remove the specified resource from storage.
+         */
     }
 }

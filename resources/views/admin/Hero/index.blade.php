@@ -30,29 +30,43 @@
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Title</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" name="title" class="form-control">
+                                        <input type="text" name="title" class="form-control"
+                                            value="{{ $hero->title }}">
                                     </div>
                                 </div>
 
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Sub-title</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <textarea name="sub_title" id="" class="form-control" style="height: 80px"></textarea>
+                                        <textarea name="sub_title" id="" class="form-control" style="height: 80px">{{ $hero->sub_title }}</textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Button text</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" name="btn_text" class="form-control">
+                                        <input type="text" name="btn_text" class="form-control"
+                                            value="{{ $hero->btn_text }}">
                                     </div>
                                 </div>
 
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Button URL</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" name="btn_url" class="form-control">
+                                        <input type="text" name="btn_url" class="form-control"
+                                            value="{{ $hero->btn_url }}">
                                     </div>
                                 </div>
+
+                                @if ($hero->image)
+                                    <div class="form-group row mb-4">
+                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Preview
+                                            image</label>
+                                        <div class="col-sm-12 col-md-7">
+                                            <img src="{{ asset($hero->image) }}" alt="hero-bg preview" class="w-25">
+                                        </div>
+                                    </div>
+                                @endif
+
 
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Hero-background
@@ -60,7 +74,8 @@
                                     <div class="col-sm-12 col-md-7">
                                         <div id="image-preview" class="image-preview">
                                             <label for="image-upload" id="image-label">Choose File</label>
-                                            <input type="file" name="image" id="image-upload" />
+                                            <input type="file" name="image" id="image-upload"
+                                                value="{{ $hero->image }}" />
                                         </div>
 
                                     </div>

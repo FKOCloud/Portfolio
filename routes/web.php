@@ -3,12 +3,11 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\admin\HeroController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Frontend\HomeController;
 use App\Models\Hero;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('frontend.home');
-});
+Route::get('/', [HomeController::class, 'index'] )-> name('home');
 
 Route::get('/dashboard',[DashboardController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
 

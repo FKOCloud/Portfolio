@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\DataTables\TYpertitleDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Typertitle;
 use Illuminate\Http\Request;
@@ -11,9 +12,9 @@ class TypertitleController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(TYpertitleDataTable $dataTable)
     {
-        return view('admin.Typertitle.index',);
+        return $dataTable->render('admin.Typertitle.index',);
     }
 
     /**
@@ -21,7 +22,7 @@ class TypertitleController extends Controller
      */
     public function create()
     {
-         return view('admin.Typertitle.create',);
+        return view('admin.Typertitle.create',);
     }
 
     /**
@@ -30,7 +31,7 @@ class TypertitleController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => ['required','max:200']
+            'title' => ['required', 'max:200']
         ]);
 
         $create = new Typertitle();
@@ -53,7 +54,8 @@ class TypertitleController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $title = TYpertitle::findorFail($id);
+        return view('admin.Typertitle.edit', compact('title'));
     }
 
     /**
@@ -61,7 +63,16 @@ class TypertitleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'title' => ['required', 'max:200']
+        ]);
+
+        $edit = Typertitle::findOrFail($id);
+        $edit->title =  $request->title;
+        $edit->save();
+        flash()->success('Updated succesfully');
+        return redirect()->route('admin.Typertitle.index');
+        //dd($request->all());
     }
 
     /**
@@ -69,6 +80,7 @@ class TypertitleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+         $delete = Typertitle::findOrFail($id);
+         $delete->delete();
     }
 }

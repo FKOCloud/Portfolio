@@ -8,6 +8,7 @@
 
 ## other resources used for the portfolio project
 https://php-flasher.io/laravel/ - notifications 
+https://sweetalert2.github.io/  - Warning /alerts
 
 
 

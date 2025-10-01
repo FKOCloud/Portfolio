@@ -11,7 +11,7 @@
 		<!-- Service-Area-End -->
 
 		<!-- About-Area-Start -->
-         @include('frontend.sections.service')
+         @include('frontend.sections.about')
 		<!-- About-Area-End -->
 
 		<!-- Portfolio-Area-Start -->
